@@ -195,7 +195,7 @@ static FALSE: bool = false;
 /// println!("{:?}", bv);
 /// println!("total bits set to true: {}", bv.iter().filter(|x| *x).count());
 /// ```
-pub struct BitVec<B=usize> {
+pub struct BitVec<B=u32> {
     /// Internal representation of the bit vector
     storage: Vec<B>,
     /// The number of valid bits in the internal representation
@@ -1195,7 +1195,7 @@ impl<B: BitBlock> cmp::Eq for BitVec<B> {}
 
 /// An iterator for `BitVec`.
 #[derive(Clone)]
-pub struct Iter<'a, B: 'a = usize> {
+pub struct Iter<'a, B: 'a = u32> {
     bit_vec: &'a BitVec<B>,
     range: Range<usize>,
 }
@@ -1236,7 +1236,7 @@ impl<'a, B: BitBlock> IntoIterator for &'a BitVec<B> {
 }
 
 
-pub struct IntoIter<B=usize> {
+pub struct IntoIter<B=u32> {
     bit_vec: BitVec<B>,
     range: Range<usize>,
 }
