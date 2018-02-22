@@ -409,7 +409,7 @@ impl<B: BitBlock> BitVec<B> {
 
     /// An operation might screw up the unused bits in the last block of the
     /// `BitVec`. As per (3), it's assumed to be all 0s. This method fixes it up.
-    fn fix_last_block(&mut self) {
+    pub fn fix_last_block(&mut self) {
         let extra_bits = self.len() % B::bits();
         if extra_bits > 0 {
             let mask = (B::one() << extra_bits) - B::one();
